@@ -15,7 +15,7 @@ namespace S1_P1_T2104E_DuongVT.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description";
 
             return View();
         }
