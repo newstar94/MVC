@@ -36,7 +36,7 @@ namespace S5_MVC_T2104E_DuongVT.Controllers
             try
             {
                 _user.Add(user);
-                return View("Index",_user);
+                return View("Details",user);
             }
             catch
             {
