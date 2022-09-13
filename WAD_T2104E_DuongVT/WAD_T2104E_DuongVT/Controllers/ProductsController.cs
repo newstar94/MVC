@@ -12,7 +12,7 @@ namespace WAD_T2104E_DuongVT.Controllers
 {
     public class ProductsController : Controller
     {
-        private DataDbContext db = new DataDbContext();
+        private Data db = new Data();
 
         // GET: Products
         public ActionResult Index()

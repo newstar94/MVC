@@ -6,11 +6,11 @@ using System.Web;
 
 namespace WAD_T2104E_DuongVT.Models
 {
-    public class DataDbContext : DbContext
+    public class Data : DbContext
     {
-        //public DataDbContext() : base("name=Conn")
-        //{
-        //}
+        public Data() : base("DB_T2104E_DuongVT")
+        {
+        }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
     }

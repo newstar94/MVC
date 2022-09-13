@@ -10,15 +10,15 @@ namespace WAD_T2104E_DuongVT.Models
     {
         public int ProductId { get; set; }
         [Required]
-        [StringLength(32,MinimumLength =3)]
+        [StringLength(32, MinimumLength = 3)]
         public string Name { get; set; }
         [Required]
         public decimal Price { get; set; }
         [Required]
-        [Range(1,100)]
+        [Range(1, 100)]
         public int Quantity { get; set; }
         [Required]
-        public DateTime ReleaseDate  { get; set; }
+        public DateTime ReleaseDate { get; set; }
         [Required]
         public int CategoryID { get; set; }
         public virtual Category Category { get; set; }

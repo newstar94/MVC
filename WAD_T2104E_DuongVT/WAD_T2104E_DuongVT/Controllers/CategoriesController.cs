@@ -12,7 +12,7 @@ namespace WAD_T2104E_DuongVT.Controllers
 {
     public class CategoriesController : Controller
     {
-        private DataDbContext db = new DataDbContext();
+        private Data db = new Data();
 
         // GET: Categories
         public ActionResult Index()
