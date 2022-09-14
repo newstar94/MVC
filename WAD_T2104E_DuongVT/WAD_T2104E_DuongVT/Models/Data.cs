@@ -8,7 +8,7 @@ namespace WAD_T2104E_DuongVT.Models
 {
     public class Data : DbContext
     {
-        public Data() : base("DB_T2104E_DuongVT")
+        public Data() : base("name = Conn")
         {
         }
         public DbSet<Product> Products { get; set; }
