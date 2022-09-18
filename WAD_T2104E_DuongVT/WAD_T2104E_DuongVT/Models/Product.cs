@@ -14,6 +14,7 @@ namespace WAD_T2104E_DuongVT.Models
         [StringLength(32, MinimumLength = 3)]
         public string Name { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:n}")]
         public decimal Price { get; set; }
         [Required]
         [Range(1, 100)]
