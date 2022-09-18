@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,8 +19,26 @@ namespace WAD_T2104E_DuongVT.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Category);
+            ViewBag.SelectedCategory = new SelectList(db.Categories, "CategoryId", "CategoryName");
+            var products = db.Products
+                .Include(p => p.Category)
+                .OrderBy(p=>p.Name);            
             return View(products.ToList());
+        }
+
+        //POST SEARCH
+        [HttpPost]
+        public ActionResult Search(int? SelectedCategory, string txtName, DateTime? txtDate)
+        {
+            ViewBag.SelectedCategory = new SelectList(db.Categories, "CategoryId", "CategoryName", SelectedCategory);
+            int Id = SelectedCategory.GetValueOrDefault();
+            var products = (from p in db.Products
+                                      where p.CategoryID == Id || !SelectedCategory.HasValue
+                                      where p.Name.Contains(txtName)
+                                      where p.ReleaseDate == txtDate || !txtDate.HasValue
+                            orderby p.Name
+                                      select p).ToList();
+            return View("_ProductPartialView", products);
         }
 
         // GET: Products/Details/5

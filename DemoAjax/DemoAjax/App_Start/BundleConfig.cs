@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace WAD_T2104E_DuongVT
+namespace DemoAjax
 {
     public class BundleConfig
     {
@@ -9,10 +9,14 @@ namespace WAD_T2104E_DuongVT
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js", "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+                        "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+
+            //Ajax
+            bundles.Add(new ScriptBundle("~/bundles/jqueryAjax").Include(
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.

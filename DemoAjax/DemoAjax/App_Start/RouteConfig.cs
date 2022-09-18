@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace WAD_T2104E_DuongVT
+namespace DemoAjax
 {
     public class RouteConfig
     {
@@ -16,7 +16,7 @@ namespace WAD_T2104E_DuongVT
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Products", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "DemoAjax", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
