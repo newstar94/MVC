@@ -32,13 +32,19 @@ namespace WAD_T2104E_DuongVT.Controllers
         {
             ViewBag.SelectedCategory = new SelectList(db.Categories, "CategoryId", "CategoryName", SelectedCategory);
             int Id = SelectedCategory.GetValueOrDefault();
-            var products = (from p in db.Products
-                                      where p.CategoryID == Id || !SelectedCategory.HasValue
-                                      where p.Name.Contains(txtName)
-                                      where p.ReleaseDate == txtDate || !txtDate.HasValue
-                            orderby p.Name
-                                      select p).ToList();
-            return View("_ProductPartialView", products);
+            //var products = (from p in db.Products
+            //                          where p.CategoryID == Id || !SelectedCategory.HasValue
+            //                          where p.Name.Contains(txtName)
+            //                          where p.ReleaseDate == txtDate || !txtDate.HasValue
+            //                          orderby p.Name
+            //                          select p).ToList();
+            var products = db.Products
+                .Include(p => p.Category)
+                .Where(p=>p.Name.Contains(txtName))
+                .Where(p=>p.CategoryID==Id|| !SelectedCategory.HasValue)
+                .Where(p=>p.ReleaseDate==txtDate || !txtDate.HasValue)
+                .OrderBy(p => p.Name);
+            return View("_ProductPartialView", products.ToList());
         }
 
         // GET: Products/Details/5
