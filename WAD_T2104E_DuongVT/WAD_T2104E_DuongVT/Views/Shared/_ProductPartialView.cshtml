@@ -20,29 +20,28 @@
         </th>
         <th></th>
     </tr>
-
-    @foreach (var item in Model)
+    @for (int i=0;i<Model.Count();i++)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                @Model.ToList()[i].Category.CategoryName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Model.ToList()[i].Name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Model.ToList()[i].Price
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
+                @Model.ToList()[i].Quantity
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
+                @Model.ToList()[i].ReleaseDate.ToString("dd/MM/yyyy")
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit",  new { id = item.ProductId }) |
-                @Html.ActionLink("Details", "Details",  new { id = item.ProductId }) |
-                @Html.ActionLink("Delete", "Delete",  new { id = item.ProductId })
+                @Html.ActionLink("Edit", "Edit",  new { id = @Model.ToList()[i].ProductId}) |
+                @Html.ActionLink("Details", "Details",  new { id = @Model.ToList()[i].ProductId }) |
+                @Html.ActionLink("Delete", "Delete",  new { id = @Model.ToList()[i].ProductId })
             </td>
         </tr>
     }

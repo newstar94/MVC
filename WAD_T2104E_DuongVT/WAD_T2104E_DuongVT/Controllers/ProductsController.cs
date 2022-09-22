@@ -41,7 +41,7 @@ namespace WAD_T2104E_DuongVT.Controllers
             var products = db.Products
                 .Include(p => p.Category)
                 .Where(p=>p.Name.Contains(txtName))
-                .Where(p=>p.CategoryID==Id|| !SelectedCategory.HasValue)
+                .Where(p=>p.CategoryID==Id || !SelectedCategory.HasValue)
                 .Where(p=>p.ReleaseDate==txtDate || !txtDate.HasValue)
                 .OrderBy(p => p.Name);
             return View("_ProductPartialView", products.ToList());
