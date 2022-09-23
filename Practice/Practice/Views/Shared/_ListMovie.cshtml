@@ -3,16 +3,16 @@
 <table class="table">
     <tr>
         <th>
-            Thể loại
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Genre.GenreName)
         </th>
         <th>
-            Tiêu đề
+            @Html.DisplayNameFor(model => model.FirstOrDefault().MovieTitle)
         </th>
         <th>
-            Ngày phát hành
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ReleaseDate)
         </th>
         <th>
-            Thời lượng
+            @Html.DisplayNameFor(model => model.FirstOrDefault().RunningTime)
         </th>
         <th></th>
     </tr>
@@ -27,7 +27,7 @@
                 @Html.DisplayFor(modelItem => item.MovieTitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
+                @item.ReleaseDate.ToString("dd/MM/yyyy")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RunningTime)  <span>phút</span>

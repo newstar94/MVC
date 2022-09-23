@@ -17,6 +17,7 @@ namespace Practice.Models
         [Required(ErrorMessage ="Bạn chưa nhập ngày phát hành")]
         [Display(Name ="Ngày phát hành")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}",ApplyFormatInEditMode =true)]
         public DateTime ReleaseDate { get; set; }
 
         [Required(ErrorMessage ="Bạn chưa nhập thời lượng phim")]
