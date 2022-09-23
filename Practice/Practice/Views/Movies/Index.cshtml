@@ -1,0 +1,46 @@
+﻿@model PagedList.IPagedList<Practice.Models.Movie>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Danh sách phim";
+}
+
+<h2>Danh sách phim</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Ajax.BeginForm("Index", "Movies", new AjaxOptions()
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "partialView"
+}))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.Label("Tên phim: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("MovieTitle", ViewBag.MovieTitle as string)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Ngày phát hành: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("Date", null, htmlAttributes: new { @type = "date" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Thể loại: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GenreID", "All")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div id="partialView">
+    @Html.Partial("_ListMovie")
+</div>
